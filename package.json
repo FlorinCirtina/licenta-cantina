@@ -1,0 +1,29 @@
+{
+  "name": "licenta-cantina",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florinCartina/licenta-cantina.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florinCartina/licenta-cantina/issues"
+  },
+  "homepage": "https://github.com/florinCartina/licenta-cantina#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-validator": "^2.20.4",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2"
+  }
+}
