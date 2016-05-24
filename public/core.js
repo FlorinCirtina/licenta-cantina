@@ -1,4 +1,4 @@
-var scotchTodo = angular.module('scotchTodo', []);
+var scotchTodo = angular.module('cantina', []);
 
 function mainController($scope, $http) {
     $scope.formData = {};

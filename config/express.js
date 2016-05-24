@@ -15,4 +15,14 @@ module.exports.init = function(app) {
   app.use(methodOverride());
   app.disable('x-powered-by');
   app.use(morgan('dev')); // log every request to the console
+
+  app.use(function(req, res, next) {
+  	req.resources = req.resources || {};
+  	next();
+  });
+
+  app.use(function (err, req, res, next) {
+  	console.log('error midleware');
+  	res.json(err);
+  });
 }
