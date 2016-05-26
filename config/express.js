@@ -1,9 +1,15 @@
 'use strict';
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var methodOverride = require('method-override');
-
-var expressValidator = require('express-validator');
+const path = require('path');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const expressValidator = require('express-validator');
+const session = require('express-session');
+const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
+// const morgan = require('morgan');
+const config = require('./index');
+// const Logger = require('./winston')
+// const logger = Logger.logger();
 
 module.exports.init = function(app) {
 /**
@@ -14,7 +20,23 @@ module.exports.init = function(app) {
   app.use(bodyParser.json());
   app.use(methodOverride());
   app.disable('x-powered-by');
-  app.use(morgan('dev')); // log every request to the console
+
+  let sessionOpts = {
+    secret: config.session.secret,
+    key: 'skey.sid',
+    resave: config.session.resave,
+    saveUninitialized: config.session.saveUninitialized
+  };
+
+  if (config.session.type === 'mongo') {
+    sessionOpts.store = new MongoStore({
+      url: config.mongodb.uri
+    });
+  }
+
+  app.use(session(sessionOpts));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(function(req, res, next) {
   	req.resources = req.resources || {};
@@ -22,7 +44,6 @@ module.exports.init = function(app) {
   });
 
   app.use(function (err, req, res, next) {
-  	console.log('error midleware');
   	res.json(err);
   });
 }

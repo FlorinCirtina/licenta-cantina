@@ -1,20 +1,37 @@
 'use strict';
 
-var passport = require('passport');
-var mongoose = require('mongoose');
-// var User = mongoose.model('User');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
-module.exports.init = function(app) {
-  passport.serializeUser(function(user, done) {
+module.exports.init = initPassport;
+
+function initPassport(app) {
+
+  passport.serializeUser((user, done) => {
+    /**
+     *  Serialize the whole user, only put non-sensitive user data
+     */
     done(null, user);
+
+    /**
+     *  You could only save the user's `id`
+     */
+    //done(null, user.id);
   });
 
-  passport.deserializeUser(function(user, done) {
+  passport.deserializeUser((user, done) => {
+    /**
+     *  If you stored only the user's `id` in the session,
+     *  you need to fetch the user from the DB
+     */
     //User.findById(id, done);
+
     done(null, user);
   });
 
-  // load strategies
-  // require('./strategies/local')();
-  // require('./strategies/facebook')();
+  /**
+   *  load strategies
+   */
+  require('./strategies/local')();
 };
