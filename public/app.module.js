@@ -2,10 +2,7 @@
   'use strict';
 
   /**
-  * @ngdoc overview
-  * @name siit
-  * @description
-  * # siit
+  * # cantina
   *
   * Main module of the application.
   */
@@ -14,7 +11,6 @@
       [
         'ui.router',
         'test'
-        // 'ngRoute'
       ]);
 
 

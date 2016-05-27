@@ -9,18 +9,14 @@
 
   <title>Node/Angular Todo App</title>
 
-  <!-- SCROLLS -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-  <style>
-    html                    { overflow-y:scroll; }
-    body                    { padding-top:50px; }
-    #todo-list              { margin-bottom:30px; }
-  </style>
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 
-
+  <!-- Load dependencies from node modules -->
   <script src="node_modules/angular/angular.js"></script>
   <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 
+  <!-- Load our app files -->
   <script src="app.module.js"></script>
   <script src="app.config.js"></script>
 
@@ -30,11 +26,9 @@
   <script src="test/controllers/test.controller.js"></script>
 
 </head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS -->
 <body>
   <div class="container">
 
-    <!-- HEADER AND TODO COUNT -->
     <div class="jumbotron text-center">
       <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
     </div>

@@ -17,14 +17,5 @@
     }
 
     initialize();
-
-
-    // $scope.$on('finishedRender', function() {
-    //   vm.showContent = true;
-    //   Metronic.init();
-    //   initTableGrid();
-    //   angular.element("[data-toggle='tooltip']").tooltip();
-    // }); /* trigger after DOM is rendered*/
-
   }
 })();

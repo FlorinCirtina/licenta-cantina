@@ -11,11 +11,8 @@
       .state('test', {
         url: '/test',
         templateUrl: 'test/views/test.html',
-        controller: 'TestController as vm',
-        data: {
-          menuActive: 'users',
-          policies: 'user.read'
-        }
+        controller: 'TestController as vm'
+
       })
   }
 })();

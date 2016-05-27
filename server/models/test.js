@@ -1,9 +1,0 @@
-'use strict';
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const TestSchema = new Schema({
-	text : String
-});
-
-module.exports = mongoose.model('Todo', TestSchema);

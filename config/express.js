@@ -6,10 +6,7 @@ const expressValidator = require('express-validator');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
-// const morgan = require('morgan');
 const config = require('./index');
-// const Logger = require('./winston')
-// const logger = Logger.logger();
 
 module.exports.init = function(app) {
 /**
