@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-12">
+		<form>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label>
+				<input type="email" ng-model="vm.user.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" ng-model="vm.user.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-default" ng-click="vm.login()">Login</button>
+			<div>
+				<span>or</span>
+				<span ng-click="vm.navigateTo()">Register</span>
+			</div>
+		</form>
+	</div>		
+</div>

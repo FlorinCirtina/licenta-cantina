@@ -10,7 +10,8 @@
   .module('cantina',
       [
         'ui.router',
-        'test'
+        'test',
+        'login'
       ]);
 
 
