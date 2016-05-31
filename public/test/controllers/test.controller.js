@@ -5,13 +5,13 @@
   .module('test')
   .controller('TestController', TestController);
 
-  TestController.$inject = [ '$state', '$timeout', '$scope', '$window'];
+  TestController.$inject = ['Login', '$state', '$timeout', '$scope', '$window'];
 
-  function TestController( $state, $timeout, $scope, $window) {
+  function TestController(Login, $state, $timeout, $scope, $window) {
     var vm = this;
     
     function initialize() {
-      console.log(JSON.parse($window.sessionStorage.user || null));
+      console.log(Login.getLoggedUser());
     }
 
     initialize();

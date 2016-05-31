@@ -11,18 +11,16 @@
     var vm = this;
     vm.user = {};
     vm.login = function() {
-      console.log(111);
-
       Login.create('/signin', vm.user)
         .then(function success(result) {
           console.log('result', result);
-          $window.sessionStorage.user = JSON.stringify(result.data)
+          Login.setUser(result.data);
           vm.user = {};
+          $state.go('test');
+
         }, function error(err) {
           console.log('err', err);
-
         });
-
     }
 
     vm.navigateTo = function(courseId) {
