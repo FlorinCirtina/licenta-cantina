@@ -13,7 +13,6 @@
     vm.login = function() {
       Login.create('/signin', vm.user)
         .then(function success(result) {
-          console.log('result', result);
           Login.setUser(result.data);
           vm.user = {};
           $state.go('test');

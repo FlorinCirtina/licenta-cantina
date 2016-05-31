@@ -12,8 +12,6 @@ module.exports.bearer = bearerAuthentication;
  *  Checks if a user is authenticated or not
  */
 function ensureAuthenticated(req, res, next) {
-	console.log('HERE');
-	console.log('req.isAuthenticated()', req.isAuthenticated());
   if (req.isAuthenticated()) {
     return next();
   }

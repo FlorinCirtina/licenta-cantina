@@ -11,6 +11,7 @@
       [
         'ui.router',
         'test',
+        'user',
         'login'
       ]);
 
