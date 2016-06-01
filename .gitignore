@@ -27,6 +27,6 @@ build/Release
 node_modules
 
 config/environments/*
-!config/environments/example.js
+!config/environments/config-example.js
 
 .idea
