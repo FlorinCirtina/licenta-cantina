@@ -18,6 +18,26 @@
   // });
 
   function config($urlRouterProvider, $stateProvider) {
+    $stateProvider
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController as vm'
+
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'templates/register.html',
+        controller: 'RegisterController as vm'
+
+      })
+      .state('myProfile', {
+        url: '/myProfile',
+        templateUrl: 'templates/user.html',
+        controller: 'UserController as vm'
+
+      })
     $urlRouterProvider.otherwise("/login");
   }
 

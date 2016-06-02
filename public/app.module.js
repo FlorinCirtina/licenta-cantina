@@ -9,10 +9,7 @@
   angular
   .module('cantina',
       [
-        'ui.router',
-        'test',
-        'user',
-        'login'
+        'ui.router'
       ]);
 
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('login')
+  .module('cantina')
   .factory('Login', Login);
 
   Login.$inject = ['$http', '$window'];

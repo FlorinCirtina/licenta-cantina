@@ -11,7 +11,8 @@
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
   <link rel="stylesheet" type="text/css" href="assets/css/index.css">
-
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- Load dependencies from node modules -->
   <script src="node_modules/angular/angular.js"></script>
   <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
@@ -20,24 +21,16 @@
   <script src="app.module.js"></script>
   <script src="app.config.js"></script>
 
-  <script src="test/test.module.js"></script>
-  <script src="test/test.config.js"></script>
-  <script src="test/test.service.js"></script>
-  <script src="test/controllers/test.controller.js"></script>
-  <script src="login/login.module.js"></script>
-  <script src="login/login.config.js"></script>
-  <script src="login/login.service.js"></script>
-  <script src="login/controllers/login.controller.js"></script>
-  <script src="login/controllers/register.controller.js"></script>
-  <!-- User -->
-  <script src="users/user.module.js"></script>
-  <script src="users/user.config.js"></script>
-  <script src="users/user.service.js"></script>
-  <script src="users/controllers/user.controller.js"></script>
+  <script src="services/login.service.js"></script>
+  <script src="services/user.service.js"></script>
+  <script src="controllers/login.controller.js"></script>
+  <script src="controllers/register.controller.js"></script>
+  <script src="controllers/user.controller.js"></script>
 
 </head>
 <body>
   <div class="container">
+  <div ng-include="'templates/navbar.html'"></div>
     <div ui-view></div>
   </div>
 </body>

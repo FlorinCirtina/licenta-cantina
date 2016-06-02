@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('login')
+  .module('cantina')
   .controller('RegisterController', RegisterController);
 
   RegisterController.$inject = ['Login', '$state', '$scope'];

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('user')
+  .module('cantina')
   .factory('User', User);
 
   User.$inject = ['$http'];

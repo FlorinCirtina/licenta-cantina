@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('user')
+  .module('cantina')
   .controller('UserController', UserController);
 
   UserController.$inject = ['Login', '$state', '$timeout', '$scope', '$window'];

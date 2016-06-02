@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('login')
+  .module('cantina')
   .controller('LoginController', LoginController);
 
   LoginController.$inject = ['Login','$state', '$scope', '$window'];
@@ -15,7 +15,7 @@
         .then(function success(result) {
           Login.setUser(result.data);
           vm.user = {};
-          $state.go('test');
+          // $state.go('test');
 
         }, function error(err) {
           console.log('err', err);
