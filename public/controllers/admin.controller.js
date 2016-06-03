@@ -36,8 +36,8 @@
         }, function error(err) {
           console.log('err', err);
         });
-        
     }
+    
     vm.navigateTo = function(state) {
       $state.go(state);
     };
