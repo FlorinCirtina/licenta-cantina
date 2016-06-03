@@ -13,6 +13,7 @@
       restrict: 'E',
       controllerAs: 'vm',
       bindToController: true,
+      scope: {},
       templateUrl: 'templates/navbar.html',
       controller: function($scope) {
         var vm = this;

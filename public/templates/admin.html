@@ -1,0 +1,33 @@
+<nav-bar-directive></nav-bar-directive>
+<h1>Admin section</h1>
+
+<div class="row">
+	<div class="col-md-6">
+		<h3>Adaugare Categorie</h3>
+		<div>
+			<form>
+				<div class="form-group">
+					<label>Nume categorie</label>
+					<input type="text" ng-model="vm.category.name" class="form-control" placeholder="">
+				</div>
+				<button type="submit" class="btn btn-default" ng-click="vm.addCategory()">Adauga</button>
+		</form>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<h3>Adaugare Produs</h3>
+		<div>
+			<form>
+				<div class="form-group">
+					<label>Nume produs</label>
+					<input type="text" ng-model="vm.product.name" class="form-control" placeholder="">
+				</div>
+				<div>
+					<label>Alege categoria</label>
+					<select ng-model="vm.selectedCategory" ng-options="category.a for category in vm.categories"></select>
+				</div>
+				<button type="submit" class="btn btn-default" ng-click="vm.addProduct()">Adauga</button>
+		</form>
+		</div>
+	</div>
+</div>

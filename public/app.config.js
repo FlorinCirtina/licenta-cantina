@@ -48,6 +48,11 @@
         templateUrl: 'templates/meniu.html',
         controller: 'MeniuController as vm'
       })
+      .state('admin', {
+        url: '/admin',
+        templateUrl: 'templates/admin.html',
+        controller: 'AdminController as vm'
+      })
     $urlRouterProvider.otherwise("/login");
   }
 

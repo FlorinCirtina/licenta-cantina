@@ -10,6 +10,11 @@
   function Util($http) {
     var factory = {};
 
+    factory.create = function(url, data) {
+      var action = $http.post(url, data);
+      return action;
+    };
+    
     return factory;
   }
 })();
