@@ -1,23 +1,26 @@
-<div class="row">
+<div class="row margin-top-20" id="auth-container">
 	<div class="col-md-12">
 		<form>
+			<h1>Pagina de inregistrare</h1>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label>
-				<input type="email" ng-model="vm.user.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+				<input type="email" ng-model="vm.user.email" class="form-control" placeholder="Email">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>
-				<input type="password" ng-model="vm.user.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				<input type="password" ng-model="vm.user.password" class="form-control"  placeholder="Password">
 			</div>
 			<div class="form-group">
 				<label for="nume">Nume</label>
-				<input type="text" ng-model="vm.user.nume" class="form-control" id="nume" placeholder="Password">
+				<input type="text" ng-model="vm.user.name" class="form-control" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<label for="nume">Numar Legitimatie</label>
+				<input type="text" ng-model="vm.user.legNumber" class="form-control"placeholder="nr leg">
 			</div>
 			<button type="submit" class="btn btn-default" ng-click="vm.register()">Register</button>
-			<div>
-				<span>or</span>
-				<span ng-click="vm.navigateTo()">Login</span>
-			</div>
+			<span>or</span>
+			<a href="#" ng-click="vm.navigateTo()">Login</a>
 		</form>
 	</div>		
 </div>

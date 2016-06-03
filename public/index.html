@@ -23,14 +23,17 @@
 
   <script src="services/login.service.js"></script>
   <script src="services/user.service.js"></script>
+  <script src="services/utils.service.js"></script>
   <script src="controllers/login.controller.js"></script>
   <script src="controllers/register.controller.js"></script>
   <script src="controllers/user.controller.js"></script>
+  <script src="controllers/home.controller.js"></script>
+  <script src="controllers/meniu.controller.js"></script>
+  <script src="directives/navbar.directive.js"></script>
 
 </head>
 <body>
   <div class="container">
-  <div ng-include="'templates/navbar.html'"></div>
     <div ui-view></div>
   </div>
 </body>

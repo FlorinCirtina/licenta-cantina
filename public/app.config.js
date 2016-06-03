@@ -36,7 +36,17 @@
         url: '/myProfile',
         templateUrl: 'templates/user.html',
         controller: 'UserController as vm'
+      })
 
+      .state('home', {
+        url: '/home',
+        templateUrl: 'templates/home.html',
+        controller: 'HomeController as vm'
+      }) 
+      .state('meniu', {
+        url: '/meniu',
+        templateUrl: 'templates/meniu.html',
+        controller: 'MeniuController as vm'
       })
     $urlRouterProvider.otherwise("/login");
   }

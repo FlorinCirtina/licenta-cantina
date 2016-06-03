@@ -15,7 +15,7 @@
         .then(function success(result) {
           Login.setUser(result.data);
           vm.user = {};
-          // $state.go('test');
+          $state.go('home');
 
         }, function error(err) {
           console.log('err', err);

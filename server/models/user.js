@@ -28,6 +28,14 @@ let UserSchema = new Schema({
     type: Boolean,
     default: true
   },
+  role: {
+    type: String,
+    default: 'user'
+  },
+  legNumber: {
+    type: Number,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now
