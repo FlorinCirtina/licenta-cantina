@@ -14,6 +14,11 @@
       var action = $http.post(url, data);
       return action;
     };
+
+    factory.get = function(url) {
+      var action = $http.get(url);
+      return action;
+    }
     
     return factory;
   }
