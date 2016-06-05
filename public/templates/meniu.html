@@ -1,3 +1,17 @@
 <nav-bar-directive></nav-bar-directive>
 
 <h1>Meniu View</h1>
+
+	<div class="row" ng-repeat="(key, value) in vm.products">
+		<div class="col-md-12">
+			<h3>{{key}}</h3>
+		</div>
+		<div class="product-category col-md-2" ng-repeat="product in value">
+			<div>
+				<p>Nume : {{product.name}}</p>
+				<p>Pret : {{product.price}}</p>
+				<p>Gramaj : {{product.grammage}}</p>
+			</div>
+		</div>
+		<!-- <p>Cat  {{value}}</p> -->
+	</div>
