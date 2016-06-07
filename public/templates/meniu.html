@@ -1,17 +1,59 @@
 <nav-bar-directive></nav-bar-directive>
-
-<h1>Meniu View</h1>
-
-	<div class="row" ng-repeat="(key, value) in vm.products">
-		<div class="col-md-12">
-			<h3>{{key}}</h3>
+<div class="row">
+	<div class="text-center pointer">
+		<span ng-repeat="category in vm.categories" class="title category-name">
+		 <span ng-click="vm.gotoAnchor(category.name)">{{category.name}} </span>
+		</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+		<div class="row" id="{{key}}" ng-repeat="(key, value) in vm.products">
+			<div class="col-md-12">
+				<h3>{{key}}</h3>
+			</div>
+			<div class="row col-md-12 product-category" ng-repeat="product in value">
+				<div class="col-md-6">
+					<p>Nume : {{product.name}}</p>
+					<p>Descriere : {{product.description}} -gramaj {{product.grammage}}</p>
+				</div>
+				<div class="col-md-3">
+					<p>Pret : {{product.price}}</p>
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-default">
+						Add
+					</button>
+				</div>
+			</div>
+			<!-- <p>Cat  {{value}}</p> -->
 		</div>
-		<div class="product-category col-md-2" ng-repeat="product in value">
-			<div>
-				<p>Nume : {{product.name}}</p>
-				<p>Pret : {{product.price}}</p>
-				<p>Gramaj : {{product.grammage}}</p>
+	</div>
+	<div class="col-md-4" id="cart">
+		<div class="col-md-12">
+			<h1 class="text-center">Cosul de cumparaturi</h1>
+		</div>
+		<div>
+			<div class="row margin-bottom-10">
+				<div class="product-name col-md-8">Nume produs pret</div>
+				<input type="number" class="product-name col-md-4" value="2">
+			</div>		
+			<div class="row margin-bottom-10">
+				<div class="product-name col-md-8">Nume produs pret</div>
+				<input type="number" class="product-name col-md-4" value="2">
+			</div>		
+			<div class="row margin-bottom-10">
+				<div class="product-name col-md-8">Nume produs pret</div>
+				<input type="number" class="product-name col-md-4" value="2">
 			</div>
 		</div>
-		<!-- <p>Cat  {{value}}</p> -->
+
+		<div class="col-md-12">
+			<h2>Total: 374lei</h2>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-danger">Trimite comanda</button>
+		</div>
 	</div>
+</div>
+
