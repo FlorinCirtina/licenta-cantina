@@ -32,6 +32,7 @@ function signinUser(req, res, next) {
 }
 
 function signoutUser(req, res, next) {
+  req.session.cart = {};
   req.logout();
   res.redirect('/');
 }

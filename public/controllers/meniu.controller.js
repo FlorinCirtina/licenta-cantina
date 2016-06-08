@@ -12,16 +12,21 @@
     vm.products = [];
     vm.categories = [];
     vm.cart = [];
+    var urlCart = '/api/cart';
+
     initialize();
     initializeCategories()
     initializeCart();
     function initializeCart() {
-      var url = 'api/cart';
-      Util.get(url)
+      Util.get(urlCart)
       .then(function success(result) {
         vm.cart = result.data.products;
         vm.totalCartValue = result.data.total;
-        
+        if(result.data.products && result.data.products.length) {
+          vm.existCart = true;
+        } else {
+          vm.existCart = false;
+        }
       }, function error(err) {
         console.log('err', err);
       })
@@ -74,17 +79,19 @@
     }
 
     vm.addToCart = function(product) {
-      var url = '/api/cart';
-
-      Util.create(url, product)
+      Util.create(urlCart, product)
         .then(function success(result) {
-          Util.get(url)
-            .then(function success(result) {
-              vm.cart = result.data.products;
-              vm.totalCartValue = result.data.total;
-            }, function error(err) {
-              console.log('err', err);
-            })
+          initializeCart();
+        }, function error(err) {
+          console.log('err', err);
+        })
+    }
+
+    vm.removeFromCart = function(product) {
+
+      Util.update(urlCart, product)
+        .then(function success(result) {
+          initializeCart();
         }, function error(err) {
           console.log('err', err);
         })

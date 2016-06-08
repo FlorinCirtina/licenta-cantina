@@ -23,6 +23,9 @@
 				<div class="col-md-3">
 					<button ng-click="vm.addToCart(product)" class="btn btn-default">
 						Add
+					</button>	
+					<button ng-click="vm.removeFromCart(product)" class="btn btn-default">
+						Remove
 					</button>
 				</div>
 			</div>
@@ -35,16 +38,18 @@
 		<div>
 			<div ng-repeat="cart in vm.cart" class="row margin-bottom-10">
 				<div class="product-name col-md-8">{{cart.name}} - pret {{cart.price}} Cant {{cart.quantity}}</div>
-				<!-- <input type="number" class="product-name col-md-4" value=""> -->
 			</div>		
 		</div>
-
-		<div class="col-md-12">
-			<h2>Total: {{vm.totalCartValue}}</h2>
+		<div ng-show="vm.existCart">
+			
+			<div class="col-md-12">
+				<h2>Total: {{vm.totalCartValue}}</h2>
+			</div>
+			<div class="col-md-12">
+				<button class="btn btn-danger">Trimite comanda</button>
+			</div>
 		</div>
-		<div class="col-md-12">
-			<button class="btn btn-danger">Trimite comanda</button>
-		</div>
+		<div ng-show="!vm.existCart">Nu exista produse adaugate</div>
 	</div>
 </div>
 

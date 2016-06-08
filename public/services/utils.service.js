@@ -15,6 +15,11 @@
       return action;
     };
 
+    factory.update = function(url, data) {
+      var action = $http.put(url, data);
+      return action;
+    };
+
     factory.get = function(url) {
       var action = $http.get(url);
       return action;

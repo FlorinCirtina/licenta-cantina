@@ -12,6 +12,7 @@ const Product = mongoose.model('Product');
  */
 module.exports.createProduct = createProduct;
 module.exports.addToCart = addToCart;
+module.exports.deleteFromCart = deleteFromCart;
 module.exports.clearCart = clearCart;
 module.exports.getCart = getCart;
 module.exports.update = update;
@@ -60,6 +61,28 @@ function addToCart(req, res, next) {
   }
 
   return res.json(req.session.cart);
+}
+
+function deleteFromCart(req, res) {
+  let product = req.body;
+  let cartIndex;
+  
+  let productId = req.session.cart.products.find((c,index) => {
+    cartIndex = index;
+    return c._id == product._id
+  });
+
+  if(productId) {
+    let productFromCart = req.session.cart.products[cartIndex];
+    if(productFromCart.quantity > 1) {
+      req.session.cart.products[cartIndex].quantity--;
+      req.session.cart.total -= productId.price;
+    } else {
+      req.session.cart.products.splice(cartIndex, 1);
+      req.session.cart.total -= productId.price;
+    }
+  }
+  res.json(product);
 }
 
 function getCart(req, res, next) {
