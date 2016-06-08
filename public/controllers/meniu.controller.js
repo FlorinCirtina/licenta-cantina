@@ -11,8 +11,21 @@
     var vm = this;
     vm.products = [];
     vm.categories = [];
+    vm.cart = [];
     initialize();
     initializeCategories()
+    initializeCart();
+    function initializeCart() {
+      var url = 'api/cart';
+      Util.get(url)
+      .then(function success(result) {
+        vm.cart = result.data.products;
+        vm.totalCartValue = result.data.total;
+        
+      }, function error(err) {
+        console.log('err', err);
+      })
+    }
     function initialize() {
       var url = '/api/products';
       Util.get(url)
@@ -28,7 +41,6 @@
       var url = '/api/categories';
       Util.get(url)
         .then(function success(result) {
-          console.log(result.data);
           vm.categories = result.data;
         }, function error(err) {
           console.log('err', err);
@@ -42,7 +54,8 @@
         var data = result[i];
         var product = {
           name: data.name,
-          price: data.price
+          price: data.price,
+          _id: data._id
         };
         var categoryName = data.category.name;
         if(i == 0) {
@@ -60,13 +73,25 @@
       vm.products = test;
     }
 
-    vm.gotoAnchor = function(id) {
-      console.log(id);
-      // set the location.hash to the id of
-      // the element you wish to scroll to.
-      $location.hash(id);
+    vm.addToCart = function(product) {
+      var url = '/api/cart';
 
-      // call $anchorScroll()
+      Util.create(url, product)
+        .then(function success(result) {
+          Util.get(url)
+            .then(function success(result) {
+              vm.cart = result.data.products;
+              vm.totalCartValue = result.data.total;
+            }, function error(err) {
+              console.log('err', err);
+            })
+        }, function error(err) {
+          console.log('err', err);
+        })
+    }
+
+    vm.gotoAnchor = function(id) {
+      $location.hash(id);
       $anchorScroll();
     }
   }

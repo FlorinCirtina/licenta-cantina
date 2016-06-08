@@ -11,6 +11,9 @@ const Product = mongoose.model('Product');
  *  Module exports
  */
 module.exports.createProduct = createProduct;
+module.exports.addToCart = addToCart;
+module.exports.clearCart = clearCart;
+module.exports.getCart = getCart;
 module.exports.update = update;
 module.exports.getProducts = getProducts;
 module.exports.getProductById = getProductById;
@@ -27,6 +30,47 @@ function createProduct(req, res, next) {
     next();
   });
 }
+
+function addToCart(req, res, next) {
+  let product = req.body;
+  product.quantity = 1;
+  req.session.cart = req.session.cart || {};
+  req.session.cart.products =  req.session.cart.products || [];
+  req.session.cart.total =  req.session.cart.total || 0;
+  let cartIndex;
+
+  if(!req.session.cart.products.length) {
+    req.session.cart.products.push(product);
+    req.session.cart.total = product.price;
+    return res.json(req.session.cart);
+  }
+
+  let productId = req.session.cart.products.find((c,index) => {
+    cartIndex = index;
+    return c._id == product._id
+  });
+  if(!productId) {
+    req.session.cart.products.push(product);
+    req.session.cart.total += product.price;
+  }
+
+  if(productId) {
+    req.session.cart.products[cartIndex].quantity++;
+    req.session.cart.total += productId.price;
+  }
+
+  return res.json(req.session.cart);
+}
+
+function getCart(req, res, next) {
+  res.json(req.session.cart);
+}
+
+function clearCart(req, res) {
+  req.session.cart = {};
+  res.json({});
+}
+
 function update(req, res, next) {
   let product = req.resources.product;
   let body = _.pick(req.body, ['name', 'description', 'price']);
