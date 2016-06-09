@@ -46,7 +46,7 @@
 				<h2>Total: {{vm.totalCartValue}}</h2>
 			</div>
 			<div class="col-md-12">
-				<button class="btn btn-danger">Trimite comanda</button>
+				<button class="btn btn-danger" ng-click="vm.submitOrder()">Trimite comanda</button>
 			</div>
 		</div>
 		<div ng-show="!vm.existCart">Nu exista produse adaugate</div>

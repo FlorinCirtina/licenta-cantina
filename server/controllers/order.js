@@ -20,19 +20,24 @@ module.exports.jsonOrder = jsonOrder;
 function createOrder(req, res, next) {
   let order = {};
   order.user = req.user._id;
+  order.total = req.body.total;
   order.products = [];
-  let productObject = {
-    product: '57520aa250e7d8e82c5dadc6',
-    quantity: 1
-  };
+  let products = req.body.products;
 
-  order.products.push(productObject);
+  for(var i = 0; i < products.length; i++) {
+    var data = products[i];
+    var productObject = {
+      product: data._id,
+      quantity : data.quantity
+    };
+    order.products.push(productObject);
+  }
 
-  console.log(order);
   Order.create(order, (err, result) => {
-    // if (err && (11000 === err.code || 11001 === err.code)) {
-    //   return res.status(400).json({ message: 'Name is already in use.' });
-    // }
+    if(err) {
+      return next(err);
+    }
+    req.session.cart = {};
     req.resources.order = result;
     next();
   });

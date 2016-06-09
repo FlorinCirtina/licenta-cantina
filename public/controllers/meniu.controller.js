@@ -17,6 +17,7 @@
     initialize();
     initializeCategories()
     initializeCart();
+
     function initializeCart() {
       Util.get(urlCart)
       .then(function success(result) {
@@ -31,6 +32,7 @@
         console.log('err', err);
       })
     }
+    
     function initialize() {
       var url = '/api/products';
       Util.get(url)
@@ -92,6 +94,24 @@
       Util.update(urlCart, product)
         .then(function success(result) {
           initializeCart();
+        }, function error(err) {
+          console.log('err', err);
+        })
+    }
+
+    vm.submitOrder = function() {
+      Util.get(urlCart)
+        .then(function success(result) {
+          var data = result.data;
+          var urlOrder = 'api/order';
+          Util.create(urlOrder, data)
+            .then(function success(orderResult) {
+              vm.cart = [];
+              vm.existCart = false;
+              vm.totalCartValue = 0;
+            }, function error(orderError) {
+              console.log('orderError');
+            });
         }, function error(err) {
           console.log('err', err);
         })
