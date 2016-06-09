@@ -1,0 +1,26 @@
+<nav-bar-directive></nav-bar-directive>
+<h1>Comenzi</h1>
+
+<div class="orders">
+	<div class="row margin-bottom-20" ng-repeat="(key,order) in vm.orders">
+		<div class="header-name">
+			Comanda numarul {{key+1}} - {{order.user.name}}
+		</div>
+			<div class="row">
+				<div class="col-md-3 header-name">Nume produs</div>
+				<div class="col-md-3 header-name">Pret</div>
+				<div class="col-md-3 header-name">Cantitate</div>
+			</div>
+		<div class="col-md-12 single-order" ng-repeat="product in order.products">
+
+			<div class="row">
+				<div class="col-md-3">{{product.product.name}}</div>
+				<div class="col-md-3">{{product.product.price}}</div>
+				<div class="col-md-3">{{product.quantity}}</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-offset-6 col-md-3 header-name">Total: {{order.total}}</div>
+		</div>
+	</div>
+</div>

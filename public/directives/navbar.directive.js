@@ -23,6 +23,7 @@
             .then(function success(result) {
               Login.destroyUser();
               vm.user = Login.getLoggedUser();
+              $state.go('login');
             });
         }
 

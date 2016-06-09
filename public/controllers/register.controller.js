@@ -14,7 +14,8 @@
     vm.register = function() {
       Login.create('/register', vm.user)
         .then(function success(result) {
-          vm.user = {};
+          Login.setUser(result.data);
+          $state.go('home');
         }, function error(err) {
           console.log('err', err);
         })

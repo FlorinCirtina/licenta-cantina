@@ -14,7 +14,6 @@ module.exports.register = registerUser;
 
 function registerUser(req, res, next) {
   let userData = _.pick(req.body, 'name', 'email', 'password', 'legNumber');
-  console.log('userData', userData);
   User.register(userData, (err, user) => {
     if (err && (11000 === err.code || 11001 === err.code)) {
       return res.status(400).json({ message: 'E-mail is already in use.' });

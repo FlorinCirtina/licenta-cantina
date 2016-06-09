@@ -53,6 +53,16 @@
         templateUrl: 'templates/admin.html',
         controller: 'AdminController as vm'
       })
+      .state('order', {
+        url: '/orders',
+        templateUrl: 'templates/orders.html',
+        controller: 'OrderController as vm'
+      })
+       .state('myOrders', {
+        url: '/myOrders',
+        templateUrl: 'templates/orders.html',
+        controller: 'OrderController as vm'
+      })
     $urlRouterProvider.otherwise("/login");
   }
 

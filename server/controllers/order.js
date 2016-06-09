@@ -57,7 +57,15 @@ function createOrder(req, res, next) {
 // }
 
 function getOrders(req, res, next) {
-  Order.find({}).populate('user').populate('products.product').exec( (err, result) => {
+  let where = {};
+
+  if(req.query.myOrders == 'true') {
+    where.user = req.user._id
+  };
+
+  Order.find(where).populate('user').populate('products.product')
+  .sort({createdAt: -1})
+  .exec( (err, result) => {
     if (err) {
       return next(err);
     }
