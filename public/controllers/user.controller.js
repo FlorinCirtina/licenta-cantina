@@ -5,15 +5,21 @@
   .module('cantina')
   .controller('UserController', UserController);
 
-  UserController.$inject = ['Login', '$state', '$timeout', '$scope', '$window'];
+  UserController.$inject = ['Util','Login', '$state', '$timeout', '$scope', '$window'];
 
-  function UserController(Login, $state, $timeout, $scope, $window) {
+  function UserController(Util, Login, $state, $timeout, $scope, $window) {
     var vm = this;
-    
-    function initialize() {
-      console.log(Login.getLoggedUser());
-    }
+    vm.user = Login.getLoggedUser()
 
-    initialize();
+    vm.updateUser = function() {
+      var userId = vm.user._id;
+      var url = '/api/user/'+userId;
+      Util.update(url, vm.user)
+        .then(function success(result) {
+          Login.setUser(result.data);
+        }, function error(err) {
+          console('err', err)
+        })
+    }
   }
 })();

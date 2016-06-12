@@ -17,7 +17,7 @@ module.exports.jsonUser = jsonUser;
 
 function update(req, res, next) {
   let user = req.resources.user;
-  let body = _.pick(req.body, ['name']);
+  let body = _.pick(req.body, ['name', 'email', 'legNumber']);
   Object.assign(user, body);
 
   user.save( (err, result) => { 
