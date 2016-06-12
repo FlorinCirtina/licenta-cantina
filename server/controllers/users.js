@@ -13,6 +13,7 @@ const User = mongoose.model('User');
 module.exports.update = update;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
+module.exports.changePassword = changePassword;
 module.exports.jsonUser = jsonUser;
 
 function update(req, res, next) {
@@ -25,6 +26,30 @@ function update(req, res, next) {
       return next(err);
     }
     req.resources.user = result;
+    next();
+  });
+}
+
+function changePassword(req, res, next) {
+  var user = new User(req.user);
+  var passwordObject = _.pick(req.body, 'oldPassword', 'newPassword', 'confirmPassword');
+
+  if(passwordObject.newPassword !== passwordObject.confirmPassword) {
+    var PassNoMatchError = new Error('New password does not match confirm password.');
+    PassNoMatchError.type = 'New password does not match confirm password.';
+    return next(PassNoMatchError);
+  }
+
+  user.changePassword(passwordObject.oldPassword, passwordObject.newPassword, function(err, data){
+    if(err) {
+      return next(err);
+    }
+
+    if(!data) {
+      return next(err);
+    };
+
+    req.resources.user = data;
     next();
   });
 }

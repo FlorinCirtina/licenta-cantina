@@ -21,5 +21,20 @@
           console('err', err)
         })
     }
+
+    vm.changePassword = function() {
+      var url = '/api/changePassword';
+      var user = {
+        oldPassword: vm.oldPassword,
+        newPassword: vm.newPassword,
+        confirmPassword: vm.confirmPassword
+      };
+      Util.update(url, user)
+        .then(function success(result) {
+          Login.setUser(result.data);
+        }, function error(err) {
+          console.log('err', err)
+        })
+    }
   }
 })();

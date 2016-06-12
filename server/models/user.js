@@ -119,40 +119,35 @@ UserSchema.statics.register = function(opts, callback) {
  */
 UserSchema.methods.changePassword = function(oldPassword, newPassword, callback) {
   // var self = this;
-
   // get the user from db with password and salt
   this.model('User').findById(this.id).select('+password +passwordSalt').exec((err, user) => {
     if (err) {
       return callback(err, null);
     }
-
     // no user found just return the empty user
     if (!user) {
       return callback(err, user);
     }
-
     passwordHelper.verify(oldPassword, user.password, user.passwordSalt, (err, result) => {
       if (err) {
         return callback(err, null);
       }
-
       // if password does not match don't return user
       if (result === false) {
         let PassNoMatchError = new Error('Old password does not match.');
         PassNoMatchError.type = 'old_password_does_not_match';
         return callback(PassNoMatchError, null);
       }
-
       // generate the new password and save the changes
       passwordHelper.hash(newPassword, (err, hashedPassword, salt) => {
         this.password = hashedPassword;
         this.passwordSalt = salt;
-
+        this.isNew = false;
+        
         this.save(function(err, saved) {
           if (err) {
             return callback(err, null);
           }
-
           if (callback) {
             return callback(err, {
               success: true,

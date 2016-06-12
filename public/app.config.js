@@ -37,6 +37,11 @@
         templateUrl: 'templates/user.html',
         controller: 'UserController as vm'
       })
+      .state('changePassword', {
+        url: '/changePassword',
+        templateUrl: 'templates/changePassword.html',
+        controller: 'UserController as vm'
+      })
 
       .state('home', {
         url: '/home',
