@@ -11,9 +11,9 @@ const Order = mongoose.model('Order');
  *  Module exports
  */
 module.exports.createOrder = createOrder;
-// module.exports.update = update;
+module.exports.update = update;
 module.exports.getOrders = getOrders;
-// module.exports.getProductById = getProductById;
+module.exports.getOrderById = getOrderById;
 // module.exports.deleteProduct = deleteProduct;
 module.exports.jsonOrder = jsonOrder;
 
@@ -42,19 +42,20 @@ function createOrder(req, res, next) {
     next();
   });
 }
-// function update(req, res, next) {
-//   let product = req.resources.product;
-//   let body = _.pick(req.body, ['name', 'description', 'price']);
-//   Object.assign(product, body);
 
-//   product.save( (err, result) => { 
-//     if (err) {
-//       return next(err);
-//     }
-//     req.resources.product = result;
-//     next();
-//   });
-// }
+function update(req, res, next) {
+  let order = req.resources.order;
+  let body = _.pick(req.body, ['paid']);
+  Object.assign(order, body);
+
+  order.save( (err, result) => { 
+    if (err) {
+      return next(err);
+    }
+    req.resources.order = result;
+    next();
+  });
+}
 
 function getOrders(req, res, next) {
   let where = {};
@@ -74,16 +75,16 @@ function getOrders(req, res, next) {
   });
 }
 
-// function getProductById(req, res, next) {
-//   let productId = req.params.id;
-//   Product.findById(productId, (err, result) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     req.resources.product = result;
-//     next();
-//   });
-// }
+function getOrderById(req, res, next) {
+  let orderId = req.params.id;
+  Order.findById(orderId, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    req.resources.order = result;
+    next();
+  });
+}
 
 // function deleteProduct(req, res, next) {
 //   let productId = req.resources.product ? req.resources.product._id : null ;

@@ -27,6 +27,16 @@
         })
     }
 
+    vm.updateOrder = function(order) {
+      var orderId = order._id;
+      var url = '/api/order/' + orderId;
+      Util.update(url, order)
+        .then(function success(result) {
+        }, function error(err) {
+          console.log('err', err);
+        });
+    }
+
     vm.navigateTo = function(state) {
       $state.go(state);
     };

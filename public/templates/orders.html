@@ -21,6 +21,14 @@
 		</div>
 		<div class="col-md-12">
 			<div class="col-md-offset-6 col-md-3 header-name">Total: {{order.total}}</div>
+			<div class="col-md-offset-6 col-md-3 header-name">
+				<label ng-class="{'text-success': order.paid == true, 'text-error' : order.paid == false}">Platita</label>
+				<input 
+				 ng-model="order.paid" 
+					type="checkbox"
+				 ng-change="vm.updateOrder(order)">
+			</div>
+
 		</div>
 	</div>
 </div>
