@@ -39,3 +39,43 @@
 		</div>
 	</div>
 </div>
+
+<div class="col-md-6 margin-top-40">
+	<form>
+		<div class="row form-group col-md-12">
+			<input type="text" class="form-control" ng-model="searchCategory" placeholder="Cauta categorii">
+		</div>
+		<div class="row margin-bottom-20" ng-repeat="category in vm.editCategory | filter:searchCategory">
+			<div class="col-md-6 form-group">
+				<h3 class="no-padding">{{category.name}}</h3>
+				<h3 class="no-padding">{{category.description}}</h3>
+			</div>
+			<div class="col-md-6 form-group">
+				<div class="btn-group" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default" ng-click="vm.navigateTo('category', category._id)" >Editeaza</button>
+				  <button type="button" class="btn btn-default" ng-click="vm.deleteCategory(category._id)" >Sterge</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="col-md-6 margin-top-40">
+	<form>
+		<div class="row form-group col-md-12">
+			<input type="text" class="form-control" ng-model="searchProducts" placeholder="Cauta produse">
+		</div>
+		<div class="row margin-bottom-20" ng-repeat="product in vm.products | filter:searchProducts">
+			<div class="col-md-6 form-group">
+				<h3 class="no-padding">{{product.name}}</h3>
+				<h3 class="no-padding">{{product.price}} lei</h3>
+			</div>
+			<div class="col-md-6 form-group">
+				<div class="btn-group" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default" ng-click="vm.navigateTo('product', product._id)" >Editeaza</button>
+				  <button type="button" class="btn btn-default" ng-click="vm.deleteProduct(product._id)" >Sterge</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

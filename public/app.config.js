@@ -63,6 +63,16 @@
         templateUrl: 'templates/orders.html',
         controller: 'OrderController as vm'
       })
+      .state('category', {
+        url: '/category/:id',
+        templateUrl: 'templates/edit.category.html',
+        controller: 'AdminEditCategoryController as vm'
+      })
+      .state('product', {
+        url: '/product/:id',
+        templateUrl: 'templates/edit.product.html',
+        controller: 'AdminEditProductController as vm'
+      })
        .state('myOrders', {
         url: '/myOrders',
         templateUrl: 'templates/orders.html',

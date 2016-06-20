@@ -24,6 +24,11 @@
       var action = $http.get(url);
       return action;
     }
+
+    factory.delete = function(url) {
+      var action = $http.delete(url);
+      return action;
+    }
     
     return factory;
   }

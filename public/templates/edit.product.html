@@ -1,0 +1,19 @@
+<nav-bar-directive></nav-bar-directive>
+<form>
+	<div class="col-md-5">
+		
+		<div class="col-md-12 form-group">
+			<label>Nume</label>
+			<input type="text" class="form-control" ng-model="vm.product.name">
+		</div>
+		<div class="col-md-12 form-group">
+			<label>Pret</label>
+			<input type="text" class="form-control" ng-model="vm.product.price">
+		</div>
+		<div class="col-md-12 form-group">
+			<div class="btn-group" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default" ng-click="vm.editProduct(vm.product._id)" >Editeaza</button>
+			</div>
+		</div>
+	</div>
+</form>

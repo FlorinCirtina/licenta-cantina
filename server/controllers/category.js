@@ -30,6 +30,7 @@ function createCategory(req, res, next) {
   });
 }
 function update(req, res, next) {
+  console.log(2222);
   let category = req.resources.category;
   let body = _.pick(req.body, ['name', 'description']);
   Object.assign(category, body);
