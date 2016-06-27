@@ -24,7 +24,7 @@
 					<button ng-click="vm.addToCart(product)" class="btn btn-default">
 						Add
 					</button>	
-					<button ng-click="vm.removeFromCart(product)" class="btn btn-default">
+					<button ng-click="vm.removeFromCart(product)" class="btn btn-danger">
 						Remove
 					</button>
 				</div>
@@ -32,10 +32,10 @@
 		</div>
 	</div>
 	<div class="col-md-4" id="cart">
-		<div class="col-md-12">
+		<div class="col-md-12 border-bottom">
 			<h1 class="text-center">Cosul de cumparaturi</h1>
 		</div>
-		<div>
+		<div class="border-bottom">
 			<div ng-repeat="cart in vm.cart" class="row margin-bottom-10">
 				<div class="product-name col-md-8">{{cart.name}} - pret {{cart.price}} Cant {{cart.quantity}}</div>
 			</div>		
