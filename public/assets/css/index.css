@@ -69,3 +69,7 @@ body {
 .text-error {
   color: red;
 }
+.logo {
+  height: 55px;
+  width: 75px;
+}
