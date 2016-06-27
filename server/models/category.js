@@ -11,9 +11,6 @@ let CategorySchema = new Schema({
     required: true,
     unique: true
   },
-  description: {
-    type: String,
-  },
   createdAt: {
     type: Date,
     default: Date.now

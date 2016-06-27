@@ -21,6 +21,9 @@ let ProductSchema = new Schema({
     ref : 'Category',
     required: true
   },
+  description: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now

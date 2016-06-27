@@ -19,7 +19,7 @@ module.exports.deleteCategory = deleteCategory;
 module.exports.jsonCategory = jsonCategory;
 
 function createCategory(req, res, next) {
-  let category = _.pick(req.body, ['name', 'description']);
+  let category = _.pick(req.body, ['name']);
 
   Category.create(category, (err, result) => {
     if (err && (11000 === err.code || 11001 === err.code)) {
@@ -30,9 +30,8 @@ function createCategory(req, res, next) {
   });
 }
 function update(req, res, next) {
-  console.log(2222);
   let category = req.resources.category;
-  let body = _.pick(req.body, ['name', 'description']);
+  let body = _.pick(req.body, ['name']);
   Object.assign(category, body);
 
   category.save( (err, result) => { 

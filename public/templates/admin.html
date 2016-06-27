@@ -3,22 +3,6 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h3>Adaugare Categorie</h3>
-		<div>
-			<form>
-				<div class="form-group">
-					<label>Nume categorie</label>
-					<input type="text" ng-model="vm.category.name" class="form-control" placeholder="">
-				</div>
-				<div class="form-group">
-					<label>Descriere categorie</label>
-					<input type="text" ng-model="vm.category.description" class="form-control" placeholder="">
-				</div>
-				<button type="submit" class="btn btn-default" ng-click="vm.addCategory()">Adauga</button>
-		</form>
-		</div>
-	</div>
-	<div class="col-md-6">
 		<h3>Adaugare Produs</h3>
 		<div>
 			<form>
@@ -29,6 +13,10 @@
 				<div class="form-group">
 					<label>Pret</label>
 					<input type="number" ng-model="vm.product.price" class="form-control" placeholder="">
+				</div>
+				<div class="form-group">
+					<label>Descriere categorie</label>
+					<input type="text" ng-model="vm.product.description" class="form-control" placeholder="">
 				</div>				
 				<div>
 					<label>Alege categoria</label>
@@ -37,27 +25,19 @@
 				<button type="submit" class="btn btn-default" ng-click="vm.addProduct()">Adauga</button>
 		</form>
 		</div>
-	</div>
-</div>
-
-<div class="col-md-6 margin-top-40">
-	<form>
-		<div class="row form-group col-md-12">
-			<input type="text" class="form-control" ng-model="searchCategory" placeholder="Cauta categorii">
 		</div>
-		<div class="row margin-bottom-20" ng-repeat="category in vm.editCategory | filter:searchCategory">
-			<div class="col-md-6 form-group">
-				<h3 class="no-padding">{{category.name}}</h3>
-				<h3 class="no-padding">{{category.description}}</h3>
-			</div>
-			<div class="col-md-6 form-group">
-				<div class="btn-group" role="group" aria-label="...">
-				  <button type="button" class="btn btn-default" ng-click="vm.navigateTo('category', category._id)" >Editeaza</button>
-				  <button type="button" class="btn btn-danger" ng-click="vm.deleteCategory(category._id)" >Sterge</button>
-				</div>
+			<div class="col-md-6">
+			<h3>Adaugare Categorie</h3>
+			<div>
+				<form>
+					<div class="form-group">
+						<label>Nume categorie</label>
+						<input type="text" ng-model="vm.category.name" class="form-control" placeholder="">
+					</div>
+					<button type="submit" class="btn btn-default" ng-click="vm.addCategory()">Adauga</button>
+			</form>
 			</div>
 		</div>
-	</form>
 </div>
 
 <div class="col-md-6 margin-top-40">
@@ -69,11 +49,32 @@
 			<div class="col-md-6 form-group">
 				<h3 class="no-padding">{{product.name}}</h3>
 				<h3 class="no-padding">{{product.price}} lei</h3>
+				<h3 class="no-padding">{{product.description}}</h3>
+
 			</div>
 			<div class="col-md-6 form-group">
 				<div class="btn-group" role="group" aria-label="...">
 				  <button type="button" class="btn btn-default" ng-click="vm.navigateTo('product', product._id)" >Editeaza</button>
 				  <button type="button" class="btn btn-danger" ng-click="vm.deleteProduct(product._id)" >Sterge</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="col-md-6 margin-top-40">
+	<form>
+		<div class="row form-group col-md-12">
+			<input type="text" class="form-control" ng-model="searchCategory" placeholder="Cauta categorii">
+		</div>
+		<div class="row margin-bottom-20" ng-repeat="category in vm.editCategory | filter:searchCategory">
+			<div class="col-md-6 form-group">
+				<h3 class="no-padding">{{category.name}}</h3>
+			</div>
+			<div class="col-md-6 form-group">
+				<div class="btn-group" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default" ng-click="vm.navigateTo('category', category._id)" >Editeaza</button>
+				  <button type="button" class="btn btn-danger" ng-click="vm.deleteCategory(category._id)" >Sterge</button>
 				</div>
 			</div>
 		</div>

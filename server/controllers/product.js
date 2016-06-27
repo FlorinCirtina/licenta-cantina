@@ -22,7 +22,7 @@ module.exports.deleteProduct = deleteProduct;
 module.exports.jsonProduct = jsonProduct;
 
 function createProduct(req, res, next) {
-  let product = _.pick(req.body, ['name', 'price', 'category']);
+  let product = _.pick(req.body, ['name', 'price', 'category', 'description']);
   Product.create(product, (err, result) => {
     if (err && (11000 === err.code || 11001 === err.code)) {
       return res.status(400).json({ message: 'Name is already in use.' });
@@ -109,7 +109,7 @@ function update(req, res, next) {
 }
 
 function getProducts(req, res, next) {
-  Product.find({}).populate('category').exec( (err, result) => {
+  Product.find().sort({createdAt: -1}).populate('category').exec( (err, result) => {
     if (err) {
       return next(err);
     }
