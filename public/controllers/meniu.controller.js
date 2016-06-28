@@ -62,7 +62,8 @@
         var product = {
           name: data.name,
           price: data.price,
-          _id: data._id
+          _id: data._id,
+          description: data.description
         };
         var categoryName = data.category.name;
         if(i == 0) {
