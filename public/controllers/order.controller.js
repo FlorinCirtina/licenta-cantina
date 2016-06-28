@@ -32,8 +32,9 @@
       var url = '/api/order/' + orderId;
       Util.update(url, order)
         .then(function success(result) {
+          initialize();
         }, function error(err) {
-          console.log('err', err);
+          initialize();
         });
     }
 
