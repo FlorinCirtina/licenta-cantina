@@ -10,6 +10,7 @@ var server;
 
 /**
  * Set express (app) variables
+ sss
  */
 app.set('config', config);
 app.set('root', __dirname);
