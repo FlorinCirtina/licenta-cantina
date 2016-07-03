@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/florinCartina/licenta-cantina.git"
+    "url": "git+https://github.com/FlorinCirtina/licenta-cantina.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/florinCartina/licenta-cantina/issues"
+    "url": "https://github.com/FlorinCirtina/licenta-cantina/issues"
   },
-  "homepage": "https://github.com/florinCartina/licenta-cantina#readme",
+  "homepage": "https://github.com/florinCirtina/licenta-cantina#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
     "connect-mongo": "^1.2.0",
